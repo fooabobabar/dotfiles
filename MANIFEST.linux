@@ -1,0 +1,9 @@
+.Xresources|symlink|
+.xprofile|symlink|
+.vimrc|symlink|
+.bashrc|symlink|
+.bash_profile|symlink|
+gf2_config.ini|symlink|.config
+mpv.conf|symlink|.config/mpv
+i3status|symlink|.config
+i3|symlink|.config

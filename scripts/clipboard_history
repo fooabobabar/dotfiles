@@ -1,0 +1,17 @@
+#!/bin/sh
+
+LOGFILE="$HOME/.clipboard_history.log"
+PREV_CONTENT=""
+
+touch "$LOGFILE"
+
+while true; do
+    CURRENT_CONTENT=$(xclip -o -selection clipboard 2>/dev/null)
+
+    if [ "$CURRENT_CONTENT" != "$PREV_CONTENT" ] && [ -n "$CURRENT_CONTENT" ]; then
+        echo "$(date '+%Y-%m-%d %H:%M:%S');$CURRENT_CONTENT" >> "$LOGFILE"
+        PREV_CONTENT="$CURRENT_CONTENT"
+    fi
+
+    sleep 1
+done

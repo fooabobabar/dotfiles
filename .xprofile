@@ -1,0 +1,5 @@
+export PATH="$PATH:$HOME/.local/scripts"
+export PATH="$PATH:$HOME/.local/bin"
+
+# setxkbmap -layout us,br -option grp:shifts_toggle,ctrl:nocaps,compose:ralt
+xmodmap -e 'keycode 102 = Super_L'
