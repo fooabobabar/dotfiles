@@ -13,10 +13,13 @@
    '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc
               org-mhe org-rmail org-w3m))
  '(org-refile-use-outline-path 'file)
- '(package-selected-packages nil)
- '(package-vc-selected-packages
-   '((claude-code-ide :url
-                      "https://github.com/manzaltu/claude-code-ide.el")))
+ '(package-selected-packages
+   '(cmake-mode company dash-functional docker-compose-mode
+                dockerfile-mode ellama go-mode gruber-darker-theme
+                helm-ls-git ido-completing-read+ lua-mode magit
+                markdown-mode move-text multiple-cursors nginx-mode
+                nim-mode org-cliplink paredit proof-general rust-mode
+                smex tide toml-mode typescript-mode vterm yasnippet))
  '(safe-local-variable-values '((eval rc/autocommit-dir-locals)))
  '(warning-minimum-level :error)
  '(whitespace-style
