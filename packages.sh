@@ -3,12 +3,12 @@
 sudo chown -R $USER /home/$USER
 sudo pacman -S base-devel
 
-git clone https://aur.archlinux.org/paru.git $HOME/Programming/paru
-cd $HOME/Programming/paru
+git clone https://aur.archlinux.org/yay.git $HOME/Programming/yay
+cd $HOME/Programming/yay
 makepkg -si
 hash -r
 
-paru -S --noconfirm --needed \
+yay -S --noconfirm --needed \
      tmux feh fzf bc bind inetutils \
      unzip unrar xorg-xrandr xorg-xinput \
      obs-studio ffmpeg screenkey fuse3 \

@@ -31,5 +31,5 @@
 (rc/require 'dash-functional)
 (require 'dash-functional)
 
-(rc/require 'vterm)
-(require 'vterm)
+;;; (rc/require 'vterm)
+;;; (require 'vterm)
