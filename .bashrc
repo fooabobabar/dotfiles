@@ -51,10 +51,3 @@ fi
 alias copy="xclip -selection clipboard < $1"
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/streamer/.lmstudio/bin"
-# End of LM Studio CLI section
-
-
-alias claude-mem='/home/streamer/.bun/bin/bun "/home/streamer/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'

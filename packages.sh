@@ -24,7 +24,7 @@ mkdir -p ~/.local/share/fonts/
 wget -P /home/$USER/Downloads/ https://github.com/be5invis/Iosevka/releases/download/v34.3.0/PkgTTF-Iosevka-34.3.0.zip
 wget -P /home/$USER/Downloads/ https://github.com/JetBrains/JetBrainsMono/releases/download/v1.0.2/JetBrainsMono-1.0.2.zip
 
-unzip /home/$USER/Downloads/PkgTTF-Iosevka-30.0.0.zip -d ~/.local/share/fonts/
+unzip /home/$USER/Downloads/PkgTTF-Iosevka-34.3.0.zip -d ~/.local/share/fonts/
 
 # docker
 sudo usermod -aG docker $USER

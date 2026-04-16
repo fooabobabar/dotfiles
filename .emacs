@@ -257,4 +257,10 @@ compilation-error-regexp-alist-alist
   (ellama-session-header-line-global-mode -1)
   (ellama-context-header-line-global-mode -1))
 
+(custom-set-faces
+ '(markdown-code-face
+   ((t (:family "Iosevka"))))
+ '(markdown-inline-code-face
+   ((t (:family "Iosevka")))))
+
 (load-file custom-file)
