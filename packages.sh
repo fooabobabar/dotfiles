@@ -17,7 +17,7 @@ yay -S --noconfirm --needed \
      mupdf man-db man-pages gdb cmake claude-code \
      bash-completion librecad python-pip gnu-netcat \
      localsend-bin xorg-xset uv wireshark-cli mpv proton-vpn-cli \
-     openrazer-daemon polychromatic slop
+     openrazer-daemon polychromatic slop firefox
 
 mkdir -p ~/.local/share/fonts/
 
