@@ -75,6 +75,15 @@
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
 
+(require 'tatr)
+
+(require 'translator)
+(setq translator-provider 'ollama
+      translator-ollama-model "translategemma:latest")
+(with-eval-after-load 'translator
+  (keymap-global-set "C-c t" #'translator-translate-region)
+  (keymap-global-set "C-c T" #'translator-translate-ptbr-to-en))
+
 ;;; Whitespace mode
 (defun rc/set-up-whitespace-handling ()
   (interactive)
@@ -262,6 +271,53 @@ compilation-error-regexp-alist-alist
    ((t (:family "Iosevka"))))
  '(markdown-inline-code-face
    ((t (:family "Iosevka")))))
+
+;;; eww
+
+(setq eww-search-prefix "https://html.duckduckgo.com/html/?q=")
+(setq eww-download-directory (expand-file-name "~/Downloads/"))
+(setq shr-max-image-size '(800 . 600))
+(setq shr-image-animate t)
+(setq shr-use-fonts nil)
+
+(defun my-browse-url-mpv (url &rest _args)
+  "Open URL in mpv."
+  (start-process "mpv" nil "mpv" url))
+
+(defun my-browse-url-pdf (url &rest _args)
+  "Fetch remote PDF and open in pdf-tools within Emacs."
+  (let ((tmp (make-temp-file "emacs-pdf-" nil ".pdf")))
+    (url-copy-file url tmp t)
+    (find-file-other-window tmp)
+    (pdf-view-mode)))
+
+(setq browse-url-handlers
+      '(("\\(youtube\\.com\\|youtu\\.be\\|vimeo\\.com\\|twitch\\.tv\\)" . my-browse-url-mpv)
+        ("\\.mp4$" . my-browse-url-mpv)
+        ("\\.pdf$" . my-browse-url-pdf)
+        ("^gemini://" . elpher-browse-url-elpher)
+        ("^gopher://" . elpher-browse-url-elpher)
+        ("." . eww-browse-url)))
+
+(defun my/eww-download-image-at-point ()
+  "Download image at point to `eww-download-directory'."
+  (interactive)
+  (let ((url (or (get-text-property (point) 'image-url)
+                 (get-text-property (point) 'shr-url))))
+    (if (not url)
+        (message "No image at point")
+      (let* ((filename (file-name-nondirectory (url-filename (url-generic-parse-url url))))
+             (dest (expand-file-name filename eww-download-directory)))
+        (url-copy-file url dest t)
+        (message "Saved: %s" dest)))))
+
+(with-eval-after-load 'eww
+  (define-key eww-mode-map (kbd "b") #'eww-back-url)
+  (define-key eww-mode-map (kbd "a") #'eww-add-bookmark)
+  (define-key eww-mode-map (kbd "U") #'shr-copy-url)
+  (define-key eww-mode-map (kbd "D") #'my/eww-download-image-at-point))
+
+(provide 'browser)
 
 (set-fontset-font t 'emoji
                   (font-spec :family "Noto Color Emoji")
