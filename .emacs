@@ -13,7 +13,7 @@
 (defun rc/get-default-font ()
   (cond
    ((eq system-type 'windows-nt) "Consolas-13")
-   ((eq system-type 'gnu/linux) "Iosevka-12")))
+   ((eq system-type 'gnu/linux) "Iosevka-20")))
 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 
@@ -238,20 +238,6 @@ compilation-error-regexp-alist-alist
 (add-to-list 'compilation-error-regexp-alist
              '("\\([a-zA-Z0-9\\.]+\\)(\\([0-9]+\\)\\(,\\([0-9]+\\)\\)?) \\(Warning:\\)?"
                1 2 (4) (5)))
-
-;;; inline-translate
-
-(add-to-list 'load-path "~/Programming/inline-translate/")
-(require 'inline-translate)
-
-(setq inline-translate-backend 'ollama)
-(setq inline-translate-target-language "Portuguese (Brazil)")
-(setq inline-translate-ollama-model "translategemma:latest")
-(setq inline-translate-rewrite-language "Portuguese (Brazil)")
-
-(global-set-key (kbd "C-c t t") #'inline-translate-dwim)
-(global-set-key (kbd "C-c t c") #'inline-translate-clear-all)
-(global-set-key (kbd "C-c t r") #'inline-translate-rewrite-dwim-to)
 
 ;;; ellama
 

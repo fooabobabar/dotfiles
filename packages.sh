@@ -56,5 +56,6 @@ cd $HOME/Programming/gf
 ./build.sh
 
 # st
-git clone https://git.suckless.org/st $HOME/Programming/st
+git clone https://github.com/fooabobabar/st.git $HOME/Programming/st
 cd $HOME/Programming/st
+sudo make clean install
